@@ -4,7 +4,7 @@ namespace SimpleSAML\Modules\Ntktheme;
 
 use SimpleSAML\XHTML\TemplateControllerInterface;
 
-class NtkthemeThemeController implements TemplateControllerInterface
+class NtkThemeController implements TemplateControllerInterface
 {
     /**
      * Implement to modify the twig environment after its initialization (e.g. add filters or extensions).
