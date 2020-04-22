@@ -1,5 +1,5 @@
 {
-    "name": "notakey/simplesamlphp-theme-ntktheme",
+    "name": "notakey/simplesamlphp-module-ntktheme",
     "description": "A SimpleSAMLphp Notakey branded theme.",
     "type": "simplesamlphp-module",
     "keywords": ["notakey", "simplesamlphp-theme"],
