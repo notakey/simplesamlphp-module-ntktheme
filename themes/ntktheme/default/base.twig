@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>{{ pagetitle }}</title>
 		<link rel="stylesheet" type="text/css" href="/{{ baseurlpath }}module/ntktheme/resources/default.css">
+		<link rel="stylesheet" type="text/css" href="/{{ baseurlpath }}module/ntktheme/resources/pure.css">
 		{% if customcss %}<link rel="stylesheet" type="text/css" href="{{ customcss }}">
 		{% endif %}
 		{% if favicon %}
@@ -24,7 +25,8 @@
 		{% if jquery and jquery.css %}
 			<link rel="stylesheet" media="screen" type="text/css" href="/{{ baseurlpath }}resources/uitheme1.8/jquery-ui.css"/>
 		{% endif %}
-		{% if isRTL %}<link rel="stylesheet" type="text/css" href="/{{ baseurlpath }}resources/default-rtl.css"/>
+		{% if isRTL %}
+			<link rel="stylesheet" type="text/css" href="/{{ baseurlpath }}resources/default-rtl.css"/>
 		{% endif %}
 		<meta name="robots" content="noindex, nofollow"> {% block preload %}{% endblock %}
 		</head>
