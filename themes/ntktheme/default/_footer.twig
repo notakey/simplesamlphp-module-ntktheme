@@ -1,8 +1,13 @@
-    {% if footer_tagline %}
-    <div id="footerTagline">{{ footer_tagline | raw }}</div>
-    {% endif %}
-    <footer class="footer">
-      <div class="container">
-      	<p><small>Copyright © {{ buildyear }} Notakey Latvia SIA, v{{ version }} </small></p>
-      </div>
-    </footer>
+{% if footer_tagline %}
+	<div id="footerTagline">{{ footer_tagline | raw }}</div>
+{% endif %}
+<footer class="footer">
+	<div class="container">
+		<p>
+			<small>Copyright ©
+				{{ buildyear }}
+				Notakey Latvia SIA
+			</small>
+		</p>
+	</div>
+</footer>
