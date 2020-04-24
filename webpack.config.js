@@ -15,6 +15,8 @@ module.exports = environment => {
     const primaryBackground = env.hasOwnProperty('primaryBackground') ? env.primaryBackground : '#b8002c';
     const transitionBackground = env.hasOwnProperty('transitionBackground') ? env.transitionBackground : '#db0100';
     const secondaryBackground = env.hasOwnProperty('secondaryBackground') ? env.secondaryBackground : '#e8410c';
+    const lighYellow = env.hasOwnProperty('lighYellow') ? env.lighYellow : '#fffdbf';
+
     return {
         entry: {
             bundle: '../../src/js/bundle',
@@ -52,7 +54,8 @@ module.exports = environment => {
                                     sourceMap: true,
                                     data: "$primaryBackground: " + primaryBackground + '; ' +
                                         "$transitionBackground: " + transitionBackground + "; " +
-                                        "$secondaryBackground: " + secondaryBackground + ";"
+                                        "$secondaryBackground: " + secondaryBackground + ";" +
+                                        "$lighYellow: " + lighYellow + ";"
                                 }
                             }
                         ]

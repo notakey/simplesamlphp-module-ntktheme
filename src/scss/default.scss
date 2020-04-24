@@ -4,6 +4,7 @@
 @import "../../node_modules/selectize/dist/css/selectize.css";
 @import "../../node_modules/highlight.js/styles/zenburn.css";
 
+
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 
 html {
@@ -230,6 +231,34 @@ menu {
     display: block;
 }
 
+.message-box {
+    background-color: #f4f4f4;
+    border-left-color: #444444;
+    border-left-style: solid;
+    border-left-width: 0.3125rem;
+    box-shadow: 0 5px 8px -6px rgba(0, 0, 0, 0.2);
+    margin: 1rem 0;
+    padding: 1.3rem;
+    position: relative;
+}
+
+
+.message-box.error {
+    background-color: #f7e4e1;
+    border-left-color: #cc4b37;
+}
+
+.message-box.warning {
+    background-color: $lighYellow;
+    border-left-color: #f9f56b;
+}
+
+.message-box.success {
+    background-color: #daf7e6;
+    border-left-color: #46cc48;
+}
+
+
 /*
 The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
 appears on the left side of the page.
@@ -244,7 +273,7 @@ appears on the left side of the page.
     bottom: 0;
     z-index: 1000;
     /* so the menu or its navicon stays above all content */
-    background: #e8410c;
+    background: $secondaryBackground;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
@@ -272,7 +301,7 @@ appears on the left side of the page.
   */
 #menu .pure-menu ul,
 #menu .pure-menu .menu-item-divided {
-    border-top: 1px solid #db0100;
+    border-top: 1px solid $transitionBackground;
 }
 
 /*
@@ -280,7 +309,7 @@ appears on the left side of the page.
   */
 #menu .pure-menu-selected,
 #menu .pure-menu-heading {
-    background: #b8002c;
+    background: $primaryBackground;
     color: black;
 }
 
