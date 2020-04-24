@@ -1,3 +1,6 @@
 .DS_Store
 enable
 disable
+node_modules
+www/assets/js/
+www/assets/fonts/
