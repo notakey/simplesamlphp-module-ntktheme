@@ -34,11 +34,8 @@ class NtkThemeController implements TemplateControllerInterface
 
         $twig->addGlobal('version', $config->getVersion());
 
-        if (is_readable('/var/simplesamlphp/BUILDTS')) {
-            $twig->addGlobal('buildyear', date("Y", @trim(file_get_contents('/var/simplesamlphp/BUILDTS'))));
-        } else {
-            $twig->addGlobal('buildyear', date("Y", time()));
-        }
+
+        $twig->addGlobal('buildyear', date("Y", time()));
     }
 
 
