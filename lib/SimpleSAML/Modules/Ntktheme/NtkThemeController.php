@@ -15,7 +15,7 @@ class NtkThemeController implements TemplateControllerInterface
      */
     public function setUpTwig(\Twig_Environment &$twig)
     {
-        $config = \SimpleSAML_Configuration::getInstance();
+        $config = \SimpleSAML\Configuration::getInstance();
         if ($config->hasValue('favicon')) {
             $twig->addGlobal('favicon', $config->getValue('favicon'));
         }
@@ -33,7 +33,6 @@ class NtkThemeController implements TemplateControllerInterface
         }
 
         $twig->addGlobal('version', $config->getVersion());
-
 
         $twig->addGlobal('buildyear', date("Y", time()));
     }
