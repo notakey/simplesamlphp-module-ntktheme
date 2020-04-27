@@ -3,9 +3,31 @@
 namespace SimpleSAML\Modules\Ntktheme;
 
 use SimpleSAML\XHTML\TemplateControllerInterface;
+use SimpleSAML\Configuration;
+use SimpleSAML\Locale\Translate;
 
 class NtkThemeController implements TemplateControllerInterface
 {
+
+    /**
+     * The configuration to use in this template.
+     *
+     * @var \SimpleSAML\Configuration
+     */
+    private $config;
+
+    private $lang;
+
+    private $default_lang;
+
+    public function __construct()
+    {
+        $this->config = Configuration::getInstance();
+        $translator = new Translate($this->config);
+        $this->lang = $translator->getLanguage()->getLanguage();
+        $this->default_lang = $translator->getLanguage()->getDefaultLanguage();
+    }
+
     /**
      * Implement to modify the twig environment after its initialization (e.g. add filters or extensions).
      *
@@ -15,26 +37,41 @@ class NtkThemeController implements TemplateControllerInterface
      */
     public function setUpTwig(\Twig_Environment &$twig)
     {
-        $config = \SimpleSAML\Configuration::getInstance();
-        if ($config->hasValue('favicon')) {
-            $twig->addGlobal('favicon', $config->getValue('favicon'));
+
+        // TODO
+        // Use Translator->getLanguage()->getLanguage() to determine language and use hash values to store language specific values
+
+        if ($this->config->hasValue('favicon')) {
+            $twig->addGlobal('favicon', $this->config->getValue('favicon'));
         }
 
-        if ($config->hasValue('customcss')) {
-            $twig->addGlobal('customcss', $config->getValue('customcss'));
+        if ($this->config->hasValue('customcss')) {
+            $twig->addGlobal('customcss', $this->config->getValue('customcss'));
         }
 
-        if ($config->hasValue('webapptitle')) {
-            $twig->addGlobal('webapptitle', $config->getValue('webapptitle'));
-        }
+        $twig->addGlobal('webapptitle', $this->geti18nValue('webapptitle'));
 
-        if ($config->hasValue('footer.tagline')) {
-            $twig->addGlobal('footer_tagline', $config->getValue('footer.tagline'));
-        }
+        $twig->addGlobal('footer_tagline', $this->geti18nValue('footer.tagline'));
 
-        $twig->addGlobal('version', $config->getVersion());
+        $twig->addGlobal('version', $this->config->getVersion());
 
         $twig->addGlobal('buildyear', date("Y", time()));
+    }
+
+    private function geti18nValue($confKey)
+    {
+        if ($this->config->hasValue($confKey)) {
+            $cfgvar = $this->config->getValue($confKey);
+            if (is_array($cfgvar)) {
+                if (isset($cfgvar[$this->lang])) {
+                    return strval($cfgvar[$this->lang]);
+                } else {
+                    return strval($cfgvar[$this->default_lang]);
+                }
+            } else {
+                return strval($cfgvar);
+            }
+        }
     }
 
 
