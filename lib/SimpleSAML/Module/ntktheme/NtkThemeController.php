@@ -1,6 +1,6 @@
 <?php
 
-namespace SimpleSAML\Modules\Ntktheme;
+namespace SimpleSAML\Module\ntktheme;
 
 use SimpleSAML\XHTML\TemplateControllerInterface;
 use SimpleSAML\Configuration;
