@@ -46,10 +46,12 @@ if ($this->data['errorcode'] !== null) {
 <form action="?" method="post" name="f">
     <table>
         <tr>
-            <td rowspan="2" class="loginicon">
+            <td rowspan="2" class="loginicon" style="text-align: right; vertical-align: middle;">
                 <img alt="" src="/<?php echo $this->data['baseurlpath']; ?>resources/icons/experience/gtk-dialog-authentication.48x48.png" />
             </td>
-            <td><label for="username"><?php echo $this->t('{login:username}'); ?></label></td>
+            <td style="text-align: right;">
+                <label for="username"><?php echo $this->t('{login:username}'); ?></label>
+            </td>
             <td>
                 <input id="username" <?php echo ($this->data['forceUsername']) ? 'disabled="disabled"' : ''; ?> type="text" name="username" <?php echo $this->data['forceUsername'] ? '' : ' tabindex="1"'; ?> value="<?php echo htmlspecialchars($this->data['username']); ?>" />
             </td>
@@ -80,7 +82,7 @@ if ($this->data['errorcode'] !== null) {
         }
         ?>
         <tr>
-            <td><label for="password"><?php echo $this->t('{login:password}'); ?></label></td>
+            <td style="text-align: right;"><label for="password"><?php echo $this->t('{login:password}'); ?></label></td>
             <td><input id="password" type="password" tabindex="2" name="password" autocomplete="current-password" /></td>
             <?php
             if ($this->data['rememberMeEnabled']) {
