@@ -44,12 +44,11 @@ header('X-Frame-Options: SAMEORIGIN');
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
-    <script type="text/javascript" src="/<?php echo $this->data['baseurlpath']; ?>/resources/script.js?ver=<?php echo urlencode($this->configuration->getVersion()); ?>"></script>
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
-        <script type="text/javascript" src="/<?php echo $this->data['baseurlpath']; ?>/resources/script.js"></script>
+        <script type="text/javascript" src="/<?php echo $this->data['baseurlpath']; ?>resources/script.js?ver=<?php echo urlencode($this->configuration->getVersion()); ?>"></script>
 
         <meta name="robots" content="noindex, nofollow" />
         <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
