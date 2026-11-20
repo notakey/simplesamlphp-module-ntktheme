@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    name: PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.3', '8.4', '8.5']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer:v2
+          coverage: none
+
+      - name: Validate composer.json
+        run: composer validate
+
+      - name: Lint
+        run: find . -name '*.php' -not -path './vendor/*' -not -path './node_modules/*' -print0 | xargs -0 -n1 php -l
+
+      - name: Install into SimpleSAMLphp 2.5
+        run: |
+          composer create-project --no-dev --no-interaction simplesamlphp/simplesamlphp ../ssp '~2.5.4'
+          cd ../ssp
+          composer config repositories.module '{"type": "path", "url": "'"$GITHUB_WORKSPACE"'", "options": {"symlink": false}}'
+          composer require --no-interaction --update-no-dev 'notakey/simplesamlphp-module-ntktheme:*@dev'
+          test -d modules/ntktheme
+
+      - name: Load module classes
+        working-directory: ../ssp
+        run: |
+          php -r '
+            require "src/_autoload.php";
+            foreach (["SimpleSAML\\Module\\ntktheme\\NtkThemeController"] as $c) {
+                if (!class_exists($c)) { fwrite(STDERR, "Missing class $c\n"); exit(1); }
+                echo "ok $c\n";
+            }'
