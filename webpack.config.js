@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const buildDir = __dirname + '/www/assets/';
+const buildDir = __dirname + '/public/assets/';
 
 const localConfig = {
     css_filename: 'css/[name].css',
@@ -18,9 +18,8 @@ module.exports = environment => {
     const lighYellow = env.hasOwnProperty('lighYellow') ? env.lighYellow : '#fffdbf';
 
     return {
+        // SimpleSAMLphp 2.x ships its own JavaScript bundle, only the theme stylesheet is built here
         entry: {
-            bundle: '../../src/js/bundle',
-            logout: '../../src/js/logout/main',
             stylesheet: './src/js/style'
         },
         output: {

@@ -9,12 +9,18 @@
         "email": "ingemars.asmanis@notakey.com"
     }],
     "require": {
-        "php": ">=5.5.9",
-        "simplesamlphp/composer-module-installer": "^1.0"
+        "php": "^8.3",
+        "simplesamlphp/composer-module-installer": "^1.7",
+        "simplesamlphp/simplesamlphp": "^2.5"
+    },
+    "config": {
+        "allow-plugins": {
+            "simplesamlphp/composer-module-installer": true
+        }
     },
     "autoload": {
-        "psr-0": {
-            "SimpleSAML\\Modules\\Ntktheme\\": "lib"
+        "psr-4": {
+            "SimpleSAML\\Module\\ntktheme\\": "src/"
         }
     }
 }

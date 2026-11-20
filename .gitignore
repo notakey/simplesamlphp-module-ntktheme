@@ -2,5 +2,5 @@
 enable
 disable
 node_modules
-www/assets/js/
-www/assets/fonts/
+public/assets/js/
+public/assets/fonts/
