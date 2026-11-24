@@ -4710,6 +4710,16 @@ only screen and (max-device-width: 480px) {
         float: none;
     }
 
+    #loginTableView {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #spLoginLogo {
+        text-align: center;
+    }
+
     #content {
         margin-bottom: 10px;
         padding: 0;
